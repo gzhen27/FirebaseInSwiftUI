@@ -77,3 +77,7 @@ Icon?
 # Environment-specific files
 .env
 .env.*
+
+
+# Ignore the plists
+FirebaseInPractice/GoogleService-Info.plist
