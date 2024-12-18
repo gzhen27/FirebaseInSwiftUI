@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		EB1F72C72D13793C00763ABC /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = EB1F72C62D13793C00763ABC /* FirebaseAnalytics */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		EB1F72B22D13724900763ABC /* FirebaseInPractice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FirebaseInPractice.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -23,6 +27,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EB1F72C72D13793C00763ABC /* FirebaseAnalytics in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -65,6 +70,7 @@
 			);
 			name = FirebaseInPractice;
 			packageProductDependencies = (
+				EB1F72C62D13793C00763ABC /* FirebaseAnalytics */,
 			);
 			productName = FirebaseInPractice;
 			productReference = EB1F72B22D13724900763ABC /* FirebaseInPractice.app */;
@@ -94,6 +100,9 @@
 			);
 			mainGroup = EB1F72A92D13724900763ABC;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				EB1F72C52D13793C00763ABC /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = EB1F72B32D13724900763ABC /* Products */;
 			projectDirPath = "";
@@ -324,6 +333,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		EB1F72C52D13793C00763ABC /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 11.6.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		EB1F72C62D13793C00763ABC /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EB1F72C52D13793C00763ABC /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = EB1F72AA2D13724900763ABC /* Project object */;
 }
