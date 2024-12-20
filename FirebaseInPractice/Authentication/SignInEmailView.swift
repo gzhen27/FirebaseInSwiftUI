@@ -21,8 +21,7 @@ final class SignInEmailViewModel {
             errorMessage = "The email or password is missing"
             return
         }
-        
-        print("Signing up user...")
+
         try await AuthManager.shared.createUser(email: email, password: password)
     }
     
@@ -33,8 +32,7 @@ final class SignInEmailViewModel {
             errorMessage = "The email or password is missing"
             return
         }
-        
-        print("Signing in user...")
+    
         try await AuthManager.shared.signIn(email: email, password: password)
     }
     
