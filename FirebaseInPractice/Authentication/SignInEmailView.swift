@@ -14,17 +14,32 @@ final class SignInEmailViewModel {
     var password = ""
     var errorMessage: String?
     
-    func signIn() async {
+    func signUp() async throws {
+        clearMessage()
+        
         guard !email.isEmpty || !password.isEmpty else {
             errorMessage = "The email or password is missing"
             return
         }
         
-        do {
-            try await AuthManager.shared.createUser(email: email, password: password)
-        } catch {
-            errorMessage = error.localizedDescription
+        print("Signing up user...")
+        try await AuthManager.shared.createUser(email: email, password: password)
+    }
+    
+    func signIn() async throws {
+        clearMessage()
+        
+        guard !email.isEmpty || !password.isEmpty else {
+            errorMessage = "The email or password is missing"
+            return
         }
+        
+        print("Signing in user...")
+        try await AuthManager.shared.signIn(email: email, password: password)
+    }
+    
+    private func clearMessage() {
+        errorMessage = nil
     }
 }
 
@@ -45,10 +60,20 @@ struct SignInEmailView: View {
             
             Button {
                 Task {
-                    await viewModel.signIn()
-                    if viewModel.errorMessage == nil {
-                        viewModel.errorMessage = nil
+                    do {
+                        try await viewModel.signUp()
                         showSignInView = false
+                        return
+                    } catch {
+                        viewModel.errorMessage = error.localizedDescription
+                    }
+                    
+                    do {
+                        try await viewModel.signIn()
+                        showSignInView = false
+                        return
+                    } catch {
+                        viewModel.errorMessage = error.localizedDescription
                     }
                 }
             } label: {
