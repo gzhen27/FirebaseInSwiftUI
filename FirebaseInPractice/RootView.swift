@@ -22,7 +22,7 @@ struct RootView: View {
         }
         .fullScreenCover(isPresented: $showSignInView) {
             NavigationStack {
-                SignInMethodsView()
+                SignInMethodsView(showSignInView: $showSignInView)
             }
         }
     }

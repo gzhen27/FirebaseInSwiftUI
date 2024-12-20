@@ -21,8 +21,7 @@ final class SignInEmailViewModel {
         }
         
         do {
-            let userData = try await AuthManager.shared.createUser(email: email, password: password)
-            print(userData)
+            try await AuthManager.shared.createUser(email: email, password: password)
         } catch {
             errorMessage = error.localizedDescription
         }
@@ -31,6 +30,7 @@ final class SignInEmailViewModel {
 
 struct SignInEmailView: View {
     @State private var viewModel: SignInEmailViewModel = .init()
+    @Binding var showSignInView: Bool
     
     var body: some View {
         VStack(spacing: 12) {
@@ -46,6 +46,10 @@ struct SignInEmailView: View {
             Button {
                 Task {
                     await viewModel.signIn()
+                    if viewModel.errorMessage == nil {
+                        viewModel.errorMessage = nil
+                        showSignInView = false
+                    }
                 }
             } label: {
                 Text("Sign In")
@@ -73,6 +77,6 @@ struct SignInEmailView: View {
 
 #Preview {
     NavigationStack {
-        SignInEmailView()
+        SignInEmailView(showSignInView: .constant(false))
     }
 }
